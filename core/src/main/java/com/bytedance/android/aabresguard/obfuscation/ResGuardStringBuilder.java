@@ -2,11 +2,7 @@ package com.bytedance.android.aabresguard.obfuscation;
 
 import com.bytedance.android.aabresguard.utils.Utils;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.regex.Pattern;
 
 /**
@@ -36,6 +32,9 @@ public class ResGuardStringBuilder {
     private HashSet<String> mFileNameBlackList;
 
     public ResGuardStringBuilder() {
+        String xVariantName = System.getProperty("xVariantName");
+        System.out.println("get,xVariantName,:"+xVariantName);
+
         mFileNameBlackList = new HashSet<>();
         mFileNameBlackList.add("con");
         mFileNameBlackList.add("prn");
@@ -44,6 +43,12 @@ public class ResGuardStringBuilder {
         mReplaceStringBuffer = new ArrayList<>();
         mIsReplaced = new HashSet<>();
         mIsWhiteList = new HashSet<>();
+        List<String> mAToZTemp = Arrays.asList(mAToZ);
+        Collections.shuffle(mAToZTemp,new Random(xVariantName.hashCode()));
+        mAToZ = mAToZTemp.toArray(new String[0]);
+        List<String> mAToAllTemp = Arrays.asList(mAToAll);
+        Collections.shuffle(mAToAllTemp,new Random(xVariantName.hashCode()));
+        mAToZ = mAToAllTemp.toArray(new String[0]);
     }
 
     public void reset(HashSet<Pattern> blacklistPatterns) {

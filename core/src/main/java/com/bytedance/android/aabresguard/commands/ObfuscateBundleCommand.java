@@ -169,7 +169,7 @@ public abstract class ObfuscateBundleCommand {
         return builder.build();
     }
 
-    public Path execute() throws IOException, InterruptedException {
+    public Path  execute() throws IOException, InterruptedException {
         TimeClock timeClock = new TimeClock();
 
         AppBundle appBundle = new AppBundleAnalyzer(getBundlePath()).analyze();

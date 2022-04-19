@@ -47,6 +47,8 @@ open class AabResGuardTask : DefaultTask() {
         // init signing config
         signingConfig = getSigningConfig(project, variant)
         printSignConfiguration()
+        System.setProperty("xVariantName",variant.name)
+        println("set xVariantName:"+variant.name)
 
         prepareUnusedFile()
 

@@ -27,7 +27,7 @@ internal fun getBundleFilePath(project: Project, variant:ApplicationVariant): Pa
         }
         // AGP4.0+: removed finalBundleLocation field, and finalBundleFile is public field
         else -> {
-            getBundleFileForAGP40After(project, flavor).toPath()
+            getBundleFileForAGP34To35(project, flavor).toPath()
         }
     }
 }
